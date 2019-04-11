@@ -147,6 +147,9 @@ def experiment(subID):
 if __name__ == "__main__":
     #Fill this before start of the experiment
     subID = 0
+    #The ID of the Subject will increase if there is already data saved to system with the current ID number
+    if os.path.join(PATH, "Sub{}.csv".format(subID)):
+        subID += 1
     dataFile = experiment(subID)
     print('*'*30)
     print('Writing in data file: Sub{}.csv'.format(subID))
