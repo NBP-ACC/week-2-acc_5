@@ -12,7 +12,7 @@ SCREENSIZE = (800,600)
 infoObject = pygame.display.Info()
 #set screen size based on size of monitor
 SCREEN = pygame.display.set_mode((infoObject.current_w, infoObject.current_h))
-# SCREEN = pygame.display.set_mode(SCREENSIZE)
+#SCREEN = pygame.display.set_mode(SCREENSIZE)
 # SCREEN = pygame.display.set_mode((0,0),pygame.FULLSCREEN)
 
 
@@ -68,6 +68,6 @@ TRIALINTERVAL = 500
 FPS = 60
 
 #creates folder called "Data" in current directory if not already existing
-path = os.getcwd() + '/Data'
-if not os.path.isdir(path):
-    os.mkdir(path)
+PATH = os.path.join(os.getcwd(),'Data')
+if not os.path.isdir(PATH):
+    os.mkdir(PATH)
