@@ -73,14 +73,17 @@ def writeData(datalist, subID):
     Function to write the list of responses to a csv dataFile
     """
     #filename depends on subID
-    filename = 'Sub' + str(subID) + '.csv'
-    #print(filename)
-    with open(filename, 'w', newline='') as file:
+    filename =  'Sub' + str(subID) + '.csv'
+    #files will be saved in a previously created folder called "Data"
+    filepath = os.path.join(PATH, filename)
+    #this will create a csv file with the given directory and name
+    with open(filepath, 'w', newline='') as file:
         writer = csv.writer(file, dialect='excel')
+        #Header
         writer.writerow(['SubjectID','StimulusType','response','RT'])
+        #Data from experiment which was saved in datalistS
         for entry in datalist:
             writer.writerow(entry)
-
 
 
 ######                 main experiment loop            ##########
@@ -144,8 +147,6 @@ def experiment(subID):
 if __name__ == "__main__":
     #Fill this before start of the experiment
     subID = 0
-    while os.path.exists("Sub{}.csv".format(subID)):
-        subID += 1
     dataFile = experiment(subID)
     print('*'*30)
     print('Writing in data file: Sub{}.csv'.format(subID))
