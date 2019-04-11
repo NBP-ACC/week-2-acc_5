@@ -2,6 +2,7 @@ import pygame
 import sys
 import csv
 import random
+import os
 from parameter_list import *
 clock = pygame.time.Clock()
 
@@ -122,8 +123,8 @@ def experiment(subID):
                         if event.type == pygame.KEYDOWN:
                             if event.key == pygame.K_SPACE:
                                 # Time elapsed from stimulus to button press
-                                RT = # TODO
-                                response = # TODO
+                                RT = pygame.time.get_ticks()-start
+                                response = 1
 
                 fill_background()# clear the screen
                 pygame.display.flip()
@@ -136,7 +137,9 @@ def experiment(subID):
 
 if __name__ == "__main__":
     #Fill this before start of the experiment
-    subID = # TODO ID of the subject
+    subID = 0
+    while os.path.exists("Sub{}.csv".format(subID)):
+        subID += 1
     dataFile = experiment(subID)
     print('*'*30)
     print('Writing in data file: Sub{}.csv'.format(subID))
