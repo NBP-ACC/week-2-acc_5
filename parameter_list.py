@@ -67,8 +67,7 @@ TRIALINTERVAL = 500
 #Frames per second of the experiment
 FPS = 60
 
-# Create a directory called 'Data' in your working-directory
-# where the experiment data for each subject is saved
-# before creating it check if the directory 'Data' already exists
-if not os.path.exists("Data"):
-    os.mkdir("Data")
+#creates folder called "Data" in current directory if not already existing
+path = os.getcwd() + '/Data'
+if not os.path.isdir(path):
+    os.mkdir(path)

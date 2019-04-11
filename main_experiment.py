@@ -66,15 +66,21 @@ def draw_fixation():
 def fill_background():
     SCREEN.fill(BG_COLOR)
 
+
 #write the data into csv file
 def writeData(datalist, subID):
     """
     Function to write the list of responses to a csv dataFile
     """
-    # create a csvfile for each subject and name it: Sub[subID].csv
-    # add a header ('SubjectID','StimulusType','response','RT') to the csvfile
-    # and write each entry of datalist to a single row
-    # TODO
+    #filename depends on subID
+    filename = 'Sub' + str(subID) + '.csv'
+    #print(filename)
+    with open(filename, 'w', newline='') as file:
+        writer = csv.writer(file, dialect='excel')
+        writer.writerow(['SubjectID','StimulusType','response','RT'])
+        for entry in datalist:
+            writer.writerow(entry)
+
 
 
 ######                 main experiment loop            ##########
