@@ -131,7 +131,7 @@ def experiment(subID):
                         # if subject has pressed a button
                         if event.type == pygame.KEYDOWN:
                             if event.key == pygame.K_SPACE:
-                                # Time elapsed from stimulus to button press
+                                # Time elapsed from stimulus to button press; if space is pressed response is 1
                                 RT = pygame.time.get_ticks()-start
                                 response = 1
 
@@ -144,20 +144,17 @@ def experiment(subID):
 
     return dataFile
 
-#The ID of the Subject will increase as long as there is already data saved to system with the current ID number
+# The ID of the Subject will increase as long as there is already data saved to system with the current ID number
 def setSubID(subID):
     while os.path.isfile(os.path.join(PATH, "Sub{}.csv".format(subID))):
         subID +=1
     return subID
 
 if __name__ == "__main__":
-    #Fill this before start of the experiment
+    # first subjectID is 0
     subID = 0
-    #some information for user if subID had to be changed
-    checked = setSubID(subID)
-    if checked!= subID:
-        print("Subject ID(s) already existing, SubID changed from {} to {}.".format(subID, checked))
-        subID = checked
+    # if subID 0 already exists we need to assign a new subID
+    subID = setSubID(subID)
     dataFile = experiment(subID)
     print('*'*30)
     print('Writing in data file: Sub{}.csv'.format(subID))

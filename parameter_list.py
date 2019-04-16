@@ -50,10 +50,13 @@ BG_COLOR = (123,123,123)
 FONTSIZE = 60
 # Set number of trials in the experiment
 # How should you name the variable?
+# NUMTRIAL is the parameter name used in main_experiment.py
 NUMTRIAL = 100
 
 # Set number of nogo trials in the experiment
 # How should you name the variable?
+# PCT_NOGO is the parameter name used in main_experiment.py
+# given in percentage for computation in main_experiment.py
 PCT_NOGO = 0.2
 
 # Set the time interval in seconds of the delay
